@@ -97,7 +97,7 @@ def validate_cdk_json(context):
                 subnet_types['main'] = subnet_type
 
     print('subnets from the vpc:')
-    print(subnets_ids_from_the_vpc)
+    print(subnet_ids_from_the_vpc)
 
     print('checking subnet...')
     subnet_ids = get_subnet_ids(context)
