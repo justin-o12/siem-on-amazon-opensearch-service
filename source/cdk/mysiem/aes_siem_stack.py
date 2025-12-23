@@ -151,8 +151,13 @@ def get_subnet_ids(context):
         sbunet1 = context.node.try_get_context('imported_vpc_subnet1')
         sbunet2 = context.node.try_get_context('imported_vpc_subnet2')
         sbunet3 = context.node.try_get_context('imported_vpc_subnet3')
-        subnet_ids = [sbunet1['subnet_id'], sbunet2['subnet_id'],
-                      sbunet3['subnet_id']]
+
+        if 'subnet_id' in sbunet1:
+            # treating them all the same
+            subnet_ids = [sbunet1['subnet_id'], sbunet2['subnet_id'],
+                          sbunet3['subnet_id']]
+        else:
+            subnet_ids = [sbunet1, sbunet2, sbunet3]
     print(f"Returning subnet_ids: {subnet_ids}")
     return subnet_ids
 
