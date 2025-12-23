@@ -96,6 +96,9 @@ def validate_cdk_json(context):
             elif main:
                 subnet_types['main'] = subnet_type
 
+    print('subnets from the vpc:')
+    print(subnets_ids_from_the_vpc)
+
     print('checking subnet...')
     subnet_ids = get_subnet_ids(context)
 
@@ -150,6 +153,7 @@ def get_subnet_ids(context):
         sbunet3 = context.node.try_get_context('imported_vpc_subnet3')
         subnet_ids = [sbunet1['subnet_id'], sbunet2['subnet_id'],
                       sbunet3['subnet_id']]
+    print(f"Returning subnets_ids: {subnet_ids}")
     return subnet_ids
 
 
