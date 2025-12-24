@@ -1120,6 +1120,8 @@ class MyAesSiemStack(cdk.Stack):
             sg_vpc_aes_siem.apply_removal_policy(cdk.RemovalPolicy.RETAIN)
             """
 
+        print(f"VPC ID from resource validator is {validated_resource.get_att('vpc_id').to_string()}")
+
         sg_vpc_aes_siem2 = aws_ec2.CfnSecurityGroup(
             self, "AesSiemVpcSecurityGroup2nd",
             group_name="aes-siem-vpc-sg2",
